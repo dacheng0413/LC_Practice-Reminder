@@ -21,15 +21,18 @@
                     <thead>
                         <tr>
                             <th>LeetCode</th>
-                            <th>Review Days Left</th>
                             <th>Last Time Practice</th>
+                            <th>Review Days Left</th>
                         </tr>
                     </thead>
                     <tbody>
                 <?php								
                                     
                                     $query = "Select LC_ID, date(Input_Date) as date , TIMESTAMPDIFF(Day, Input_Date, Review_Date) as Days from LeetCode 
-                                    where Is_Remembered = 0";
+                                    where Is_Remembered = 0
+                                    having Days > 0
+                                    order by Days asc
+                                    ";
                                     $result = mysqli_query($db, $query);
                                     if ( empty($result) || !empty($result) && (mysqli_num_rows($result) == 0) ) {
                                         array_push($error_msg,  "SELECT ERROR: find Friendship <br>" . __FILE__ ." line:". __LINE__ );

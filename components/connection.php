@@ -1,6 +1,6 @@
 <?php
 include("env.php");
-date_default_timezone_set('America/New_York');
+date_default_timezone_set('America/Los_Angeles');
 $error_msg = [];
 $query_msg = [];
 $showQueries = true; 
